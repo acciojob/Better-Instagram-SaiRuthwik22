@@ -8,19 +8,12 @@ function allowDrag(event){
 	event.preventDefault()
 }
 function ending(event) {
-	event.preventDefault()
-	let someId = dragEle.id
-	let someC = dragEle.textContent
-	let containerEle = event.target
-	let x = document.getElementById(event.target.id)
-	let y = document.getElementById(dragEle.id)
-	y.id = containerEle.id
-	y.textContent = containerEle.textContent
-	x.id= someId
-	x.textContent = someC
-	dragEle = null
-	containerEle=null
-	someC=null
-	someId=null
+    event.preventDefault();
+    let containerEle = event.target;
+    let sourceImage = window.getComputedStyle(dragEle).backgroundImage;
+    let targetImage = window.getComputedStyle(containerEle).backgroundImage;
+    dragEle.style.backgroundImage = targetImage;
+    containerEle.style.backgroundImage = sourceImage;
+    dragEle = null;
 }
 
